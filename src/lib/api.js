@@ -263,9 +263,20 @@ export const api = {
     }),
 
   submitStudentRegistration: async (data) => {
-    void data;
-    throw new Error(
-      "Student registration submission is not available in this frontend-only build. Connect this form to an external form service or custom endpoint."
-    );
+    try {
+      const response = await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      // Since it's no-cors, we can't easily read the JSON response, but if fetch doesn't throw, we assume success.
+      return { status: "success" };
+    } catch (error) {
+      console.error("Error submitting registration to Google Sheets:", error);
+      throw new Error("Failed to submit registration. Please check your connection and try again.");
+    }
   },
 };

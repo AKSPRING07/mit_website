@@ -69,7 +69,7 @@ export const DepartmentOne = () => {
             >
               <Link
                 to={`/course-details/${dept.slug}`}
-                className="td_iconbox td_style_1 text-center d-block td_radius_10 td_white_bg td_p_40 h-100 shadow-sm border"
+                className="td_iconbox td_style_1 text-center d-flex flex-column justify-content-center align-items-center td_radius_10 td_white_bg td_p_40 h-100 shadow-sm border"
               >
                 <div className="td_iconbox_icon td_accent_color td_mb_10">
                    <i className="fa-solid fa-graduation-cap td_fs_64" style={{color: '#890C25'}}></i>
