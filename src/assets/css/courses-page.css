@@ -1,0 +1,200 @@
+.td_courses_showcase {
+  background:
+    radial-gradient(circle at top left, rgba(137, 12, 37, 0.08), transparent 25%),
+    linear-gradient(180deg, #fffdfb 0%, #f8f3f1 100%);
+}
+
+.td_courses_showcase .td_section_heading {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.td_courses_showcase .td_tab_links.td_style_1 {
+  justify-content: center;
+  gap: 16px;
+}
+
+.td_courses_showcase .td_tab_links.td_style_1 li a {
+  border-radius: 18px;
+  min-width: 120px;
+}
+
+.td_course_program_card {
+  height: 100%;
+  border: 1px solid rgba(137, 12, 37, 0.1);
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 245, 0.96) 100%);
+  box-shadow: 0 18px 38px rgba(0, 0, 27, 0.08);
+  /* Transition removed to prevent hover movement */
+}
+
+/* Removed box hover effect as per user request */
+
+.td_course_program_card .td_card_info {
+  height: 100%;
+  background: transparent;
+}
+
+.td_course_program_card .td_card_info_in {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+}
+
+.td_course_program_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.td_course_program_card .td_card_category {
+  margin-bottom: 0;
+}
+
+.td_course_program_card .td_card_category span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(137, 12, 37, 0.08);
+  color: var(--accent-color);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.td_course_program_icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #c02a44 100%);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 14px 28px rgba(137, 12, 37, 0.24);
+  text-transform: uppercase;
+}
+
+.td_course_program_card .td_card_title {
+  min-height: 72px;
+  margin-bottom: 14px;
+}
+
+.td_course_program_card .td_card_subtitle {
+  min-height: 96px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+
+.td_course_program_meta_wrap {
+  margin-top: auto;
+  margin-bottom: 22px;
+  padding: 0;
+}
+
+.td_course_program_stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.td_course_program_stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  min-height: 138px;
+  padding: 18px 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 27, 0.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 27, 0.04);
+}
+
+.td_course_program_stat_icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(137, 12, 37, 0.08);
+}
+
+.td_course_program_stat_icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.td_course_program_stat_text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  align-items: center;
+}
+
+.td_course_program_stat_text strong {
+  color: var(--heading-color);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.td_course_program_stat_text span {
+  margin-top: 6px;
+  color: #66697d;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  word-break: break-word;
+}
+
+.td_course_program_card .td_card_btn .td_btn {
+  width: 100%;
+}
+
+.td_course_program_card .td_card_btn .td_btn_in {
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+
+  .td_course_program_card .td_card_title,
+  .td_course_program_card .td_card_subtitle {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .td_course_program_card .td_card_info_in {
+    padding: 22px;
+  }
+
+  .td_course_program_stats {
+    grid-template-columns: 1fr;
+  }
+
+  .td_course_program_stat {
+    min-height: 120px;
+  }
+
+  .td_course_program_icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    font-size: 18px;
+  }
+}

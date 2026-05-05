@@ -1,0 +1,52 @@
+{
+  "name": "educve_react",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "npm@11.11.0",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "npm start",
+    "start": "npm run static:sync-assets && vite",
+    "build": "npm run validate:course-names && npm run static:sync-assets && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "static:sync-assets": "node scripts/sync-static-assets.cjs",
+    "validate:course-names": "node scripts/validate-course-names.cjs"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.2",
+    "jquery": "^3.7.1",
+    "react": "^18.3.1",
+    "react-countdown": "^2.3.6",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "react-iframe": "^1.8.5",
+    "react-intersection-observer": "^9.13.1",
+    "react-router-dom": "^6.27.0",
+    "react-slick": "^0.30.2",
+    "reactjs-popup": "^2.0.6",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^12.1.3",
+    "wow.js": "^1.2.2",
+    "xlsx": "^0.18.5",
+    "yet-another-react-lightbox": "^3.21.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "vite": "^7.3.2"
+  }
+}

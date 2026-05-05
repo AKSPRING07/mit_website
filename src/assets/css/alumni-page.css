@@ -1,0 +1,33 @@
+.td_alumni_section .td_post.td_style_1 {
+  height: 100%;
+}
+
+.td_alumni_section .td_post.td_style_1 .td_post_thumb {
+  aspect-ratio: 16 / 10;
+}
+
+.td_alumni_section .td_post.td_style_1 .td_post_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.td_alumni_section .td_post.td_style_1 .td_post_info {
+  min-height: 230px;
+}
+
+.td_alumni_section .td_alumni_card .td_post_thumb i,
+.td_alumni_section .td_alumni_card .td_btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .td_alumni_section .td_post.td_style_1 .td_post_thumb {
+    aspect-ratio: 4 / 3;
+  }
+
+  .td_alumni_section .td_post.td_style_1 .td_post_info {
+    min-height: auto;
+  }
+}
