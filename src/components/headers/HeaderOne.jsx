@@ -75,9 +75,6 @@ export const HeaderOne = () => {
                         <li>
                           <Link to="/students-registrations">Admission</Link>
                         </li>
-                        <li>
-                          <Link to="/online-payment">Online Payment</Link>
-                        </li>
                         <li className="menu-item-has-children">
                           <Link to="/committees">Committees</Link>
                           <ul>

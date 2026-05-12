@@ -112,7 +112,6 @@ function App() {
       
       {/* Missing Routes */}
       <Route path="/admission" element={<StudentRegistrations />} />
-      <Route path="/online-payment" element={<div className="container py-5 text-center"><h2>Online Payment Coming Soon</h2><p>Our online payment gateway is being linked with the bank.</p></div>} />
       
       {/* Club Routes */}
       <Route path="/associations/cultural" element={<ClubDetails slug="cultural" />} />
