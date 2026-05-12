@@ -5,8 +5,13 @@ const buildAbsoluteOrRelativeUrl = (url) => {
   if (typeof url !== 'string') return null;
   if (url.startsWith('http')) return url;
 
-  const path = url.startsWith('/') ? url : `/${url}`;
-  return path;
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const normalizedPath = url.startsWith('/') ? url : `/${url}`;
+  if (baseUrl === '/' || baseUrl === '') {
+    return normalizedPath;
+  }
+
+  return `${baseUrl.replace(/\/$/, '')}${normalizedPath}`;
 };
 
 const extractMediaUrl = (media) => {
@@ -25,6 +30,14 @@ const extractMediaUrl = (media) => {
   }
 
   if (typeof media === 'object') {
+    if (media.formats) {
+      const formatKeys = ['medium', 'small', 'thumbnail', 'large'];
+      for (const key of formatKeys) {
+        const found = extractMediaUrl(media.formats[key]);
+        if (found) return found;
+      }
+    }
+
     if (typeof media.url === 'string') {
       return media.url;
     }
@@ -35,14 +48,6 @@ const extractMediaUrl = (media) => {
 
     if (media.data) {
       return extractMediaUrl(media.data);
-    }
-
-    if (media.formats) {
-      const formatKeys = ['medium', 'small', 'thumbnail', 'large'];
-      for (const key of formatKeys) {
-        const found = extractMediaUrl(media.formats[key]);
-        if (found) return found;
-      }
     }
   }
 

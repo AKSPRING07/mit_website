@@ -58,7 +58,7 @@ export const GalleryGrid = () => {
                 rawSection: attrs.section || attrs.category || "Other",
               };
             })
-            .filter((item) => !!item.image && (item.section === "Campus" || item.section === "Event"));
+            .filter((item) => !!item.image);
 
           setGalleries(formatted);
         }
