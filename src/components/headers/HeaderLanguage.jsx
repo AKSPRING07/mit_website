@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { applyLanguage, setSavedLanguage, getSavedLanguage } from "../../lib/translate";
 
 import WorldIcon from "../../assets/img/icons/world.svg";
 
@@ -6,27 +7,24 @@ export const HeaderLanguage = () => {
   const [showLang, setShowLang] = useState(false);
   const [lang, setLang] = useState(() => {
     try {
-      if (typeof window !== "undefined" && window.localStorage) {
-        return localStorage.getItem("lang") || "English";
-      }
+      return getSavedLanguage();
     } catch (error) {
       console.warn("Unable to read saved language:", error);
+      return "English";
     }
-
-    return "English";
   });
 
   const handleLangChange = (newLang) => {
     setLang(newLang);
     try {
-      localStorage.setItem("lang", newLang);
+      setSavedLanguage(newLang);
     } catch (error) {
       console.warn("Unable to save selected language:", error);
     }
     setShowLang(false);
-    // Note: In a real app, this would trigger i18n translations
-    if (newLang === 'Tamil') {
-      alert('Tamil language support is being mapped for the entire website.');
+    applyLanguage(newLang);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("languagechange", { detail: { lang: newLang } }));
     }
   };
 

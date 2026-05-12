@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { ScrollToTop } from "../components/scroll_to_top/ScrollToTop";
 import { HeaderOne } from "../components/headers/HeaderOne";
 import { FooterOne } from "../components/footers/FooterOne";
@@ -7,6 +7,7 @@ import { HeaderNine } from "../components/headers/HeaderNine";
 import { Breadcrumb } from "../components/breadcrumb/Breadcrumb";
 import { HeaderSecondaryNav } from "../components/headers/HeaderSecondaryNav";
 import DESSF from "../assets/img/DESSF.jpeg";
+import { applyLanguage, getSavedLanguage } from "../lib/translate";
 
 export const Layout = ({
   children,
@@ -30,6 +31,17 @@ export const Layout = ({
 
     return () => document.body.classList.remove(bodyClass);
   }, [bodyClass, pathname]);
+
+  useEffect(() => {
+    applyLanguage(getSavedLanguage());
+
+    const onLanguageChange = (event) => {
+      applyLanguage(event?.detail?.lang || getSavedLanguage());
+    };
+
+    window.addEventListener("languagechange", onLanguageChange);
+    return () => window.removeEventListener("languagechange", onLanguageChange);
+  }, [pathname]);
 
   return (
     <>
