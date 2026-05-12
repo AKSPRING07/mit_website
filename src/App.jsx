@@ -15,8 +15,6 @@ import { TeamMembers } from "./pages/team/TeamMembers";
 import { TeamMemberDetails } from "./pages/team/TeamMemberDetails";
 import { StudentRegistrations } from "./pages/auth/StudentRegistrations";
 import { InstructorRegistrations } from "./pages/auth/InstructorRegistrations";
-import { Signup } from "./pages/auth/Signup";
-import { Signin } from "./pages/auth/Signin";
 import { Faq } from "./pages/faq/Faq";
 import { Cart } from "./pages/cart/Cart";
 import { Checkout } from "./pages/checkout/Checkout";
@@ -80,10 +78,6 @@ function App() {
         path="/instructor-registrations"
         element={<InstructorRegistrations />}
       />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/signin" element={<Signin />} />
-      <Route path="/login" element={<Navigate to="/signin" replace />} />
-      <Route path="/register" element={<Navigate to="/signup" replace />} />
       <Route path="/faqs" element={<Faq />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />

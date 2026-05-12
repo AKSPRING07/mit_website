@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { collegeInfo } from "../../data/collegeInfo";
 
-import logoBlack from "../../assets/img/logo_black.svg";
+import logoBlack from "../../assets/img/mit-logo.png";
 
 export const HeaderSidebar = ({ showSidebar, toggleSidebar }) => {
   return (

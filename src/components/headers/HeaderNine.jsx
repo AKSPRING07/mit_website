@@ -38,15 +38,6 @@ export const HeaderNine = () => {
               </ul>
             </div>
             <div className="td_top_header_right">
-              <span>
-                <Link to="/signin" className="">
-                  Login
-                </Link>
-                /
-                <Link to="/signup" className="">
-                  Register
-                </Link>
-              </span>
               <a href="#" className="td_btn td_style_1 td_medium">
                 <span className="td_btn_in td_white_color td_accent_bg">
                   <span>Apply Now</span>
@@ -263,12 +254,6 @@ export const HeaderNine = () => {
                                 <Link to="/instructor-registrations">
                                   Instructor Registrations
                                 </Link>
-                              </li>
-                              <li>
-                                <Link to="/signup">Signup</Link>
-                              </li>
-                              <li>
-                                <Link to="/signin">Signin</Link>
                               </li>
                             </ul>
                           </li>

@@ -49,13 +49,6 @@ export const HeaderSecondaryNav = () => {
             <li className="me-4"><Link to="/alumni" className="td_white_color">Alumni</Link></li>
           </ul>
           <div className="td_secondary_nav_right d-flex align-items-center">
-            <Link to="/signin" className="td_white_color td_medium td_fs_14">
-              Login
-            </Link>
-            <span className="td_white_color mx-2">/</span>
-            <Link to="/signup" className="td_white_color td_medium td_fs_14 me-3">
-              Register
-            </Link>
             <div className="position-relative td_language_wrap">
               <HeaderLanguage />
             </div>

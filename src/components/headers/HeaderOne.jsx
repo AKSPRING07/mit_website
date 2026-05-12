@@ -6,7 +6,7 @@ import { useMobilemenu } from "../../lib/hooks/useMobilemenu";
 import { useStickyHeader } from "../../lib/hooks/useStickyHeader";
 import { collegeInfo } from "../../data/collegeInfo";
 
-import Logo from "../../assets/img/logo.svg";
+import Logo from "../../assets/img/mit-logo.png";
 
 export const HeaderOne = () => {
   useMobilemenu();

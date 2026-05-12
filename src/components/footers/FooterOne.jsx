@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { collegeInfo } from "../../data/collegeInfo";
 import { diplomaPrograms, itiPrograms } from "../../data/mitPrograms";
 
-import footerLogo from "../../assets/img/footer_logo.png";
+import footerLogo from "../../assets/img/mit-logo.png";
 
 export const FooterOne = () => {
   const phone = collegeInfo.phone;
