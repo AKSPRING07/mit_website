@@ -140,8 +140,8 @@ export const HeroOne = () => {
               </svg>
             </span>
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="td_btn td_style_1 td_radius_10 td_medium td_fs_20 wow fadeInUp"
             data-wow-duration="0.9s"
             data-wow-delay="0.35s"
@@ -165,7 +165,7 @@ export const HeroOne = () => {
                 />
               </svg>
             </span>
-          </a>
+          </Link>
           <Link
             to="/contact#feedback"
             className="td_btn td_style_1 td_radius_10 td_medium td_fs_20 wow fadeInUp"
