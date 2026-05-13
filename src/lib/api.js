@@ -264,7 +264,7 @@ export const api = {
 
   submitStudentRegistration: async (data) => {
     try {
-      const response = await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycby-TLqbpILRY9b8CLQRcRApJ6zhpr0zrmMrZwaScTBgDMhTUS5_DsSLFQ4wULlAonR5/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
