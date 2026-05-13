@@ -5,7 +5,6 @@ import DESSF from "../../assets/img/DESSF.jpeg";
 import { usePageBanner } from "../../lib/hooks/usePageBanner";
 import { collegeInfo } from "../../data/collegeInfo";
 import { itiCourseOptions, polytechnicCourseOptions } from "../../data/mitPrograms";
-import * as XLSX from 'xlsx';
 
 export const StudentRegistrations = () => {
   const { banner, loading: bannerLoading } = usePageBanner("students-registrations");
@@ -37,13 +36,6 @@ export const StudentRegistrations = () => {
     referralSource: "",
   });
 
-  const downloadExcel = (data) => {
-    const worksheet = XLSX.utils.json_to_sheet([data]);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Student Registration");
-    XLSX.writeFile(workbook, `student_registration_${Date.now()}.xlsx`);
-  };
-
   const handleCourseTypeChange = (e) => {
     const value = e.target.value;
     setCourseType(value);
@@ -64,8 +56,6 @@ export const StudentRegistrations = () => {
     try {
       await api.submitStudentRegistration(formData);
       setSuccess(true);
-      // Download Excel file with form data
-      downloadExcel(formData);
       setFormData({
         firstName: "",
         lastName: "",
@@ -116,7 +106,6 @@ export const StudentRegistrations = () => {
                 <div className="alert alert-success td_mb_30" style={{ padding: '20px', backgroundColor: '#d4edda', color: '#155724', borderRadius: '10px', marginBottom: '30px' }}>
                   <h4>Application Submitted Successfully!</h4>
                   <p>Thank you for applying to MIT Polytechnic & ITI College. Our admissions team will review your application and contact you shortly.</p>
-                  <p><strong>Note:</strong> An Excel file with your application data has been downloaded to your device. You can upload this file to Google Sheets for record keeping.</p>
                 </div>
               )}
               
