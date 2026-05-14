@@ -117,7 +117,7 @@ export const MIT_PROGRAMS = Object.freeze([
     title: "SURVEYOR",
     badge: "ITI",
     duration: "2 Years",
-    qualification: "10th pass",
+    qualification: "10th pass only",
     seats: 24,
     semesters: 2,
     summary:
@@ -131,7 +131,7 @@ export const MIT_PROGRAMS = Object.freeze([
     title: "COPA",
     badge: "ITI",
     duration: "1 Year",
-    qualification: "10th / 12th pass",
+    qualification: "10th pass only",
     seats: 24,
     semesters: 1,
     summary:

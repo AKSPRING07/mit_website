@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Layout } from "../../layouts/Layout";
 import { usePageBanner } from "../../lib/hooks/usePageBanner";
 import MEW from "../../assets/img/MEW.jpeg";
 import DESSF from "../../assets/img/DESSF.jpeg";
 import { api } from "../../lib/api";
-import ReCAPTCHA from "react-google-recaptcha";
 import { collegeInfo } from "../../data/collegeInfo";
 
 export const Contact = () => {
@@ -150,27 +149,17 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const recaptchaRef = useRef(null);
-  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
     try {
-      // For reCAPTCHA v2 (checkbox), capture token from onChange (stored in recaptchaToken)
-      if (!recaptchaToken) {
-        alert("Please complete the reCAPTCHA verification.");
-        setSubmitting(false);
-        return;
-      }
-
       const payload = {
         type,
         details,
         number,
         email,
-        recaptcha: recaptchaToken,
       };
 
       // include name only when not grievance (user requested no name for grievance)
@@ -185,13 +174,6 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
       setDetails("");
       setNumber("");
       setEmail("");
-      if (
-        recaptchaRef.current &&
-        typeof recaptchaRef.current.reset === "function"
-      ) {
-        recaptchaRef.current.reset();
-        setRecaptchaToken(null);
-      }
     } catch (err) {
       console.error("Submit error", err);
       alert("There was an error submitting the form.");
@@ -202,14 +184,14 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
 
   return (
     <div
-      className={`td_contact_box td_style_2 td_accent_bg ${
+      className={`td_contact_box td_style_2 td_accent_bg td_contact_form_wrap ${
         edge ? "td_edge" : "td_radius_10"
       } td_full col-12`}
     >
-      <h3 className="td_white_color td_fs_20 td_semibold td_mb_20">
+      <h3 className="td_white_color td_fs_20 td_semibold td_mb_20 td_contact_form_title">
         Get in touch
       </h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="td_contact_form_inner">
         <div className="form-grid">
           <div className="td_form_field_3 td_mb_15 full">
             <select
@@ -270,7 +252,7 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
 
         <button
           type="submit"
-          className="td_btn td_style_1 td_radius_10 td_medium w-100"
+          className="td_btn td_style_1 td_radius_10 td_medium td_contact_submit_btn"
           disabled={submitting}
         >
           <span className="td_accent_color">
@@ -278,14 +260,6 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
           </span>
         </button>
 
-        <div className="td_mt_15 td_mb_20" style={{ marginTop: "24px" }}>
-          {/* ReCAPTCHA: requires `react-google-recaptcha` and a SITE_KEY. */}
-          <ReCAPTCHA
-            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || "YOUR_SITE_KEY"}
-            ref={recaptchaRef}
-            onChange={(token) => setRecaptchaToken(token)}
-          />
-        </div>
       </form>
     </div>
   );

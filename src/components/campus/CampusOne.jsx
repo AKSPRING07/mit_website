@@ -6,6 +6,41 @@ import campusLife2 from "../../assets/img/home_1/campur_life_2.jpg";
 import campusLife3 from "../../assets/img/home_1/campur_life_3.jpg";
 import campusLife4 from "../../assets/img/home_1/campur_life_4.jpg";
 
+const campusNavigationCards = [
+  {
+    image: campusLife1,
+    alt: "Campus Life",
+    title: "Campus Student Life",
+    link: "/gallery",
+    delay: "0.2s",
+    offsetClassName: "",
+  },
+  {
+    image: campusLife3,
+    alt: "Recreations & Wellness",
+    title: "Recreations & Wellness",
+    link: "/alumni",
+    delay: "0.3s",
+    offsetClassName: "",
+  },
+  {
+    image: campusLife2,
+    alt: "Arts & Cultural Program",
+    title: "Arts & Cultural Program",
+    link: "/associations/cultural",
+    delay: "0.25s",
+    offsetClassName: "td_height_50 td_height_lg_30",
+  },
+  {
+    image: campusLife4,
+    alt: "Sports & Fitness",
+    title: "Sports & Fitness",
+    link: "/gallery",
+    delay: "0.3s",
+    offsetClassName: "",
+  },
+];
+
 export const CampusOne = () => {
   return (
     <section className="td_accent_bg td_shape_section_1">
@@ -110,267 +145,139 @@ export const CampusOne = () => {
           <div className="col-lg-6 offset-lg-1">
             <div className="row">
               <div className="col-sm-6">
-                <div
-                  className="td_card td_style_2 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay="0.2s"
-                >
-                  <Link to="/course-details" className="td_card_thumb d-block">
-                    <img
-                      src={campusLife1}
-                      alt="Campus Life"
-                      className="w-100"
-                    />
-                  </Link>
-                  <div className="td_card_info">
-                    <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
-                      <Link to="/course-details">Campus Student Life</Link>
-                    </h2>
-                    <Link to="/course-details" className="td_card_btn">
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </Link>
+                {campusNavigationCards.slice(0, 2).map((card) => (
+                  <div key={card.title}>
+                    <div
+                      className="td_card td_style_2 wow fadeInUp"
+                      data-wow-duration="1s"
+                      data-wow-delay={card.delay}
+                    >
+                      <Link to={card.link} className="td_card_thumb d-block">
+                        <img src={card.image} alt={card.alt} className="w-100" />
+                      </Link>
+                      <div className="td_card_info">
+                        <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
+                          <Link to={card.link}>{card.title}</Link>
+                        </h2>
+                        <Link to={card.link} className="td_card_btn">
+                          <svg
+                            width="23"
+                            height="24"
+                            viewBox="0 0 23 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18.564 4.70161L4.42188 18.8438"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <svg
+                            width="23"
+                            height="24"
+                            viewBox="0 0 23 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18.564 4.70161L4.42188 18.8438"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="td_height_40 td_height_lg_30" />
                   </div>
-                </div>
-                <div className="td_height_40 td_height_lg_30" />
-                <div
-                  className="td_card td_style_2 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay="0.3s"
-                >
-                  <Link to="/course-details" className="td_card_thumb d-block">
-                    <img
-                      src={campusLife3}
-                      alt="Recreations & Wellness"
-                      className="w-100"
-                    />
-                  </Link>
-                  <div className="td_card_info">
-                    <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
-                      <Link to="/course-details">Recreations & Wellness</Link>
-                    </h2>
-                    <Link to="/course-details" className="td_card_btn">
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
+                ))}
               </div>
               <div className="col-sm-6">
-                <div className="td_height_50 td_height_lg_30" />
-                <div
-                  className="td_card td_style_2 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay="0.25s"
-                >
-                  <Link to="/course-details" className="td_card_thumb d-block">
-                    <img
-                      src={campusLife2}
-                      alt="Arts & Cultural Program"
-                      className="w-100"
-                    />
-                  </Link>
-                  <div className="td_card_info">
-                    <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
-                      <Link to="/course-details">Arts & Cultural Program</Link>
-                    </h2>
-                    <Link to="/course-details" className="td_card_btn">
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </Link>
+                {campusNavigationCards.slice(2).map((card, index) => (
+                  <div key={card.title}>
+                    {card.offsetClassName ? <div className={card.offsetClassName} /> : null}
+                    <div
+                      className="td_card td_style_2 wow fadeInUp"
+                      data-wow-duration="1s"
+                      data-wow-delay={card.delay}
+                    >
+                      <Link to={card.link} className="td_card_thumb d-block">
+                        <img src={card.image} alt={card.alt} className="w-100" />
+                      </Link>
+                      <div className="td_card_info">
+                        <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
+                          <Link to={card.link}>{card.title}</Link>
+                        </h2>
+                        <Link to={card.link} className="td_card_btn">
+                          <svg
+                            width="23"
+                            height="24"
+                            viewBox="0 0 23 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18.564 4.70161L4.42188 18.8438"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <svg
+                            width="23"
+                            height="24"
+                            viewBox="0 0 23 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18.564 4.70161L4.42188 18.8438"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
+                              stroke="white"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                    {index === 0 ? <div className="td_height_40 td_height_lg_30" /> : null}
                   </div>
-                </div>
-                <div className="td_height_40 td_height_lg_30" />
-                <div
-                  className="td_card td_style_2 wow fadeInUp"
-                  data-wow-duration="1s"
-                  data-wow-delay="0.3s"
-                >
-                  <Link to="/course-details" className="td_card_thumb d-block">
-                    <img
-                      src={campusLife4}
-                      alt="Sports & Fitness"
-                      className="w-100"
-                    />
-                  </Link>
-                  <div className="td_card_info">
-                    <h2 className="td_card_title mb-0 td_fs_18 td_semibold td_white_color">
-                      <Link to="/course-details">Sports & Fitness</Link>
-                    </h2>
-                    <Link to="/course-details" className="td_card_btn">
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <svg
-                        width="23"
-                        height="24"
-                        viewBox="0 0 23 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.564 4.70161L4.42188 18.8438"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M18.5654 13.5341C18.5654 13.5341 19.7299 5.85989 18.5654 4.69528C17.4008 3.53067 9.72656 4.69531 9.72656 4.69531"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

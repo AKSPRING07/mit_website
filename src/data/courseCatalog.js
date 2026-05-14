@@ -242,7 +242,7 @@ export const itiCourses = [
       "Site documentation and drawing support",
       "Practical outdoor training",
     ],
-    eligibility: ["8th or 10th pass as per admission rules", "Interest in field work and measurement"],
+    eligibility: ["10th pass only", "Interest in field work and measurement"],
     curriculum: [
       "Survey instruments and methods",
       "Chain and compass survey basics",
@@ -277,7 +277,7 @@ export const itiCourses = [
       "File handling, documentation, and data entry",
       "Useful skills for office and technical roles",
     ],
-    eligibility: ["8th or 10th pass as per admission rules", "Interest in computers and office work"],
+    eligibility: ["10th pass only", "Interest in computers and office work"],
     curriculum: [
       "Computer fundamentals",
       "MS Office and productivity tools",
