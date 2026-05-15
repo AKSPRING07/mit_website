@@ -153,6 +153,8 @@ export const Contact = () => {
             </div>
           </div>
         </div>
+
+        <div className="td_height_80 td_height_lg_60" />
       </section>
     </Layout>
   );
