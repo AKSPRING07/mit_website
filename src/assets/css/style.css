@@ -17367,6 +17367,15 @@ button.td_icon_btn:hover {
   margin-bottom: 24px;
 }
 
+.td_google_form_embed {
+  display: block;
+  width: 100%;
+  min-height: 1100px;
+  background-color: #ffffff;
+  border: 0;
+  border-radius: 16px;
+}
+
 /* Grid layout inside the form: two columns on desktop, single on mobile */
 .td_contact_box .form-grid {
   display: grid;
@@ -17386,6 +17395,10 @@ button.td_icon_btn:hover {
   .td_contact_box.td_edge {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .td_google_form_embed {
+    min-height: 1250px;
   }
 }
 

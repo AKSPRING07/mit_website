@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Layout } from "../../layouts/Layout";
 import { usePageBanner } from "../../lib/hooks/usePageBanner";
 import MEW from "../../assets/img/MEW.jpeg";
 import DESSF from "../../assets/img/DESSF.jpeg";
-import { api } from "../../lib/api";
 import { collegeInfo } from "../../data/collegeInfo";
 
+const GOOGLE_FORM_EMBED_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdJ2HO7E98OMPVuiV9zBVrWYTkWUiNhwVdkSWgT0nJorC26Tw/viewform?embedded=true";
+
 export const Contact = () => {
-  const { banner, loading } = usePageBanner("contact");
+  const { banner } = usePageBanner("contact");
   const { hash } = useLocation();
-  const [initialType, setInitialType] = useState("General Enquiry");
+  const [formMode, setFormMode] = useState("contact");
 
   useEffect(() => {
-    if (hash === "#grievance") setInitialType("Grievance");
-    if (hash === "#feedback") setInitialType("Feedback");
-    
+    if (hash === "#feedback") {
+      setFormMode("feedback");
+    } else if (hash === "#grievance") {
+      setFormMode("grievance");
+    } else {
+      setFormMode("contact");
+    }
+
     if (hash) {
       const timer = setTimeout(() => {
         const element = document.getElementById(hash.substring(1));
@@ -23,6 +30,7 @@ export const Contact = () => {
           element.scrollIntoView({ behavior: "smooth" });
         }
       }, 500);
+
       return () => clearTimeout(timer);
     }
   }, [hash]);
@@ -36,7 +44,6 @@ export const Contact = () => {
       breadcrumbImage={banner?.imageUrl || DESSF}
     >
       <section>
-        {/* Contact / Feedback / Grievance form */}
         <div className="td_height_120 td_height_lg_80" />
         <div className="container">
           <div className="row">
@@ -60,7 +67,9 @@ export const Contact = () => {
                         {collegeInfo.address}
                       </p>
                       <p className="td_fs_18 td_heading_color td_medium td_mb_10 td_opacity_7">
-                        <a href={`tel:${collegeInfo.phone.replace(/\s/g, "")}`}>{collegeInfo.phone}</a>
+                        <a href={`tel:${collegeInfo.phone.replace(/\s/g, "")}`}>
+                          {collegeInfo.phone}
+                        </a>
                       </p>
                       <p className="td_fs_18 td_heading_color td_medium mb-0 td_opacity_7">
                         <a href={`mailto:${collegeInfo.email}`}>
@@ -95,11 +104,12 @@ export const Contact = () => {
             allowFullScreen
           />
         </div>
+
         <div className="td_bg_filed">
           <div className="container-fluid px-0 ">
-            <div id="grievance" style={{ scrollMarginTop: '120px' }} />
-            <div id="feedback" style={{ scrollMarginTop: '120px' }} />
-            <ContactForm initialType={initialType} edge />
+            <div id="grievance" style={{ scrollMarginTop: "120px" }} />
+            <div id="feedback" style={{ scrollMarginTop: "120px" }} />
+            <ContactForm formMode={formMode} edge />
           </div>
         </div>
 
@@ -109,14 +119,18 @@ export const Contact = () => {
           <div className="row td_gap_y_24">
             <div className="col-lg-4">
               <div className="td_contact_box td_style_2 td_radius_10 td_gray_bg_5 h-100">
-                <h3 className="td_fs_24 td_semibold td_mb_15">Admission Contact</h3>
+                <h3 className="td_fs_24 td_semibold td_mb_15">
+                  Admission Contact
+                </h3>
                 <p className="td_mb_10">{collegeInfo.admissionContacts[0]}</p>
                 <p className="td_mb_0">{collegeInfo.admissionContacts[1]}</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="td_contact_box td_style_2 td_radius_10 td_gray_bg_5 h-100">
-                <h3 className="td_fs_24 td_semibold td_mb_15">Quick Highlights</h3>
+                <h3 className="td_fs_24 td_semibold td_mb_15">
+                  Quick Highlights
+                </h3>
                 <ul className="td_mp_0 td_list td_style_5">
                   {collegeInfo.admissionHighlights.map((item) => (
                     <li key={item}>{item}</li>
@@ -126,9 +140,15 @@ export const Contact = () => {
             </div>
             <div className="col-lg-4">
               <div className="td_contact_box td_style_2 td_radius_10 td_gray_bg_5 h-100">
-                <h3 className="td_fs_24 td_semibold td_mb_15">Placement Snapshot</h3>
-                <p className="td_mb_10">Monthly salary: {collegeInfo.placementInfo.salaryRange}</p>
-                <p className="td_mb_0">Placement support with leading companies.</p>
+                <h3 className="td_fs_24 td_semibold td_mb_15">
+                  Placement Snapshot
+                </h3>
+                <p className="td_mb_10">
+                  Monthly salary: {collegeInfo.placementInfo.salaryRange}
+                </p>
+                <p className="td_mb_0">
+                  Placement support with leading companies.
+                </p>
               </div>
             </div>
           </div>
@@ -138,48 +158,27 @@ export const Contact = () => {
   );
 };
 
-const ContactForm = ({ initialType = "General Enquiry", edge }) => {
-  const [type, setType] = useState(initialType);
-
-  useEffect(() => {
-    setType(initialType);
-  }, [initialType]);
-  const [name, setName] = useState("");
-  const [details, setDetails] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-
-    try {
-      const payload = {
-        type,
-        details,
-        number,
-        email,
-      };
-
-      // include name only when not grievance (user requested no name for grievance)
-      if (type !== "Grievance") payload.name = name;
-
-      // Submission requires an external form service or custom endpoint.
-      await api.post("/contact-submissions", payload);
-
-      // simple success UX
-      alert("Thanks — your message was submitted.");
-      setName("");
-      setDetails("");
-      setNumber("");
-      setEmail("");
-    } catch (err) {
-      console.error("Submit error", err);
-      alert("There was an error submitting the form.");
-    } finally {
-      setSubmitting(false);
-    }
+const ContactForm = ({ formMode = "contact", edge }) => {
+  const formContent = {
+    contact: {
+      title: "Get in touch",
+      description:
+        "Fill out the Google Form below for contact requests. Every response is saved directly to Google Forms and its connected Google Sheet.",
+    },
+    feedback: {
+      title: "Share your feedback",
+      description:
+        "Fill out the Google Form below to send feedback. Every response is saved directly to Google Forms and its connected Google Sheet.",
+    },
+    grievance: {
+      title: "Submit your grievance",
+      description:
+        "Fill out the Google Form below to submit your grievance. Every response is saved directly to Google Forms and its connected Google Sheet.",
+    },
+  }[formMode] || {
+    title: "Get in touch",
+    description:
+      "Fill out the Google Form below. Every response is saved directly to Google Forms and its connected Google Sheet.",
   };
 
   return (
@@ -189,78 +188,25 @@ const ContactForm = ({ initialType = "General Enquiry", edge }) => {
       } td_full col-12`}
     >
       <h3 className="td_white_color td_fs_20 td_semibold td_mb_20 td_contact_form_title">
-        Get in touch
+        {formContent.title}
       </h3>
-      <form onSubmit={handleSubmit} className="td_contact_form_inner">
-        <div className="form-grid">
-          <div className="td_form_field_3 td_mb_15 full">
-            <select
-              aria-label="Contact type"
-              className="w-100"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              <option>General Enquiry</option>
-              <option>Feedback</option>
-              <option>Grievance</option>
-            </select>
-          </div>
-
-          {type !== "Grievance" && (
-            <div className="td_form_field_3 td_mb_15">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Name"
-                required
-              />
-            </div>
-          )}
-
-          <div className="td_form_field_3 td_mb_15">
-            <input
-              type="number"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-              placeholder="Phone Number"
-              required
-              maxLength={10}
-            />
-          </div>
-
-          <div className="td_form_field_3 td_mb_15 full">
-            <textarea
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-              placeholder="Details"
-              required
-              rows={3}
-            />
-          </div>
-
-          <div className="td_form_field_3 td_mb_20 full">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              required
-            />
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          className="td_btn td_style_1 td_radius_10 td_medium td_contact_submit_btn"
-          disabled={submitting}
+      <p className="td_white_color td_opacity_7 td_mb_20 td_contact_form_inner">
+        {formContent.description}
+      </p>
+      <div className="td_contact_form_inner">
+        <iframe
+          title={formContent.title}
+          src={GOOGLE_FORM_EMBED_URL}
+          width="100%"
+          height="1100"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
+          className="td_google_form_embed"
         >
-          <span className="td_accent_color">
-            {submitting ? "Submitting..." : "Submit"}
-          </span>
-        </button>
-
-      </form>
+          Loading...
+        </iframe>
+      </div>
     </div>
   );
 };
