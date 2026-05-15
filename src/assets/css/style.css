@@ -17820,7 +17820,7 @@ button.td_icon_btn:hover {
 @media (min-width: 1200px) and (max-width: 1599px) {
   .td_site_header.td_style_1.td_type_3 .td_main_header_in {
     flex-wrap: nowrap;
-    gap: 12px;
+    gap: 6px;
   }
 
   .td_site_header.td_style_1.td_type_3 .td_main_header_left,
@@ -17839,7 +17839,9 @@ button.td_icon_btn:hover {
   }
 
   .td_site_header.td_style_1.td_type_3 .td_main_header_left {
-    gap: 14px;
+    gap: 0;
+    margin-left: 34px;
+    margin-right: 10px;
   }
 
   .td_site_header.td_style_1.td_type_3 .td_main_header_right {
@@ -17867,15 +17869,21 @@ button.td_icon_btn:hover {
     font-size: clamp(14px, 0.88vw, 17px);
     white-space: nowrap;
   }
+
+  .td_site_header.td_style_1.td_type_3 .td_header_social_btns {
+    gap: 14px;
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1460px) {
   .td_site_header.td_style_1.td_type_3 .td_main_header_left {
-    gap: 10px;
+    gap: 0;
+    margin-left: 30px;
+    margin-right: 8px;
   }
 
   .td_site_header.td_style_1.td_type_3 .td_header_social_btns {
-    gap: 10px;
+    gap: 14px;
     font-size: 16px;
   }
 
@@ -17894,13 +17902,16 @@ button.td_icon_btn:hover {
 
 @media (min-width: 1200px) and (max-width: 1500px) {
   .td_site_header.td_style_1.td_type_3 .td_header_social_btns {
-    display: none;
+    display: flex;
+    align-items: center;
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1320px) {
   .td_site_header.td_style_1.td_type_3 .td_main_header_left {
     gap: 0;
+    margin-left: 24px;
+    margin-right: 6px;
   }
 
   .td_site_header.td_style_1.td_type_3 .td_main_header_right {

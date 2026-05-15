@@ -26,10 +26,24 @@ export const HeaderOne = () => {
                   <img src={Logo} alt="Logo" />
                 </Link>
                 <div className="td_header_social_btns">
-                  <a href={collegeInfo.socialLinks.website} target="_blank" rel="noopener noreferrer" className="td_center">
+                  <a
+                    href={collegeInfo.socialLinks.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="td_center"
+                    aria-label="Visit official website"
+                    title="Official Website"
+                  >
                     <i className="fa-solid fa-globe"></i>
                   </a>
-                  <a href={collegeInfo.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="td_center">
+                  <a
+                    href={collegeInfo.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="td_center"
+                    aria-label="Visit Instagram page"
+                    title="Instagram"
+                  >
                     <i className="fa-brands fa-instagram"></i>
                   </a>
                 </div>
